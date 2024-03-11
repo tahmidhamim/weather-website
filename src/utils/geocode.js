@@ -1,7 +1,10 @@
 const request = require('request');
+require('dotenv').config();
 
 const geocode = (address, callback) => {
-    const url = `http://api.openweathermap.org/geo/1.0/direct?q=${encodeURIComponent(address)}&limit=5&appid=e71eb38d9fcabdd747e85ba680b2ca52`;
+    const BASE_URL = process.env.OPEN_WEATHER_MAP_API_URL;
+    const API_KEY = process.env.OPEN_WEATHER_MAP_APP_ID;
+    const url = `${BASE_URL}/geo/1.0/direct?q=${encodeURIComponent(address)}&limit=5&appid=${API_KEY}`;
 
     request({ url, json: true }, (error, { body } = {}) => {
         if (error) {
