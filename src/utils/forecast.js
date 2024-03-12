@@ -13,8 +13,8 @@ const forecast = (latitude, longitude, callback) => {
             callback('Unable to find location!');
         } else {
             const description = body.weather[0].main + ' - ' + body.weather[0].description;
-            const { temp, feels_like } = body.main;
-            callback(undefined, `${description}. It is currently ${temp} degres out. It feels like ${feels_like} degrees out.`);
+            const { temp, feels_like, temp_min, temp_max, humidity } = body.main;
+            callback(undefined, `${description}. It is currently ${temp} degres out. It feels like ${feels_like} degrees out. Temperature minimum is ${temp_min} degrees and maximum is ${temp_max} degrees. Humidity is ${humidity}%.`);
         }
     });
 };
